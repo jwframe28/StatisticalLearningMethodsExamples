@@ -64,7 +64,7 @@ mean(knn1 == Direction_09)
 
 glm1 <- glm(Direction ~ Lag2:Lag1, family = binomial, subset = train)
 glm1_prob <- predict(glm1, Weekly_09, type = "response")
-glm1_prediction <- rep("Down", length(glm_prob))
+glm1_prediction <- rep("Down", length(glm1_prob))
 glm1_prediction[glm1.prob > 0.5] <- "Up"
 Direction_09 <- Direction[!train]
 table(glm1_prediction, Direction_09)
@@ -86,12 +86,12 @@ mean(qda2_class == Direction_09)
 
 
 knn2_pred <- knn(trainonX, testonX, train_Direction, k = 50)
-table(knn2_prediction, Direction_09)
-mean(knn2_prediction == Direction_09)
+table(knn2_pred, Direction_09)
+mean(knn2_pred == Direction_09)
 
 
 
 knn3_pred <- knn(trainonX, testonX, train_Direction, k = 100)
-table(knn3_prediction, Direction_09)
-mean(knn3_prediction == Direction_09)
+table(knn3_pred, Direction_09)
+mean(knn3_pred == Direction_09)
 
